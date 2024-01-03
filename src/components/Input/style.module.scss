@@ -1,0 +1,23 @@
+.label {
+  color: var(--grey-0, #f8f9fa);
+  font-family: "Inter";
+  font-size: 0.6108rem;
+  font-weight: 400;
+}
+
+.paragraph {
+  color: var(--grey-1);
+  font-family: "Inter";
+  font-size: 0.6108rem;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .label {
+    font-size: 0.75rem;
+  }
+
+  .paragraph {
+    font-size: 0.75rem;
+  }
+}

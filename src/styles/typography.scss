@@ -1,0 +1,34 @@
+.title {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+
+  &.one {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+  }
+
+  &.two {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+  }
+
+  &.headline {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+  }
+
+  &.headlineBold {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.125rem;
+  }
+
+  &.paragraphy {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
+}

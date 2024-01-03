@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 5.0625rem;
+  padding-bottom: 3.1825rem;
+  background: var(--grey-4);
+}
+
+@media screen and (min-width: 768px) {
+  .container{
+    padding-top: 4.8125rem;
+    padding-bottom: 5.3125rem;
+  }
+}

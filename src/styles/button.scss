@@ -1,0 +1,57 @@
+.btn {
+  width: 16.4rem;
+  height: 2.4065rem;
+  padding: 0px 1.3959rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6345rem;
+  border-radius: 0.25rem;
+
+  color: var(--grey-0);
+  font-family: var(--font-primary);
+  font-size: 0.8022rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3233rem; /* 164.964% */
+
+  &.toEnter {
+    border: 0.0761rem solid var(--color-primary, #ff577f);
+    background: var(--color-primary, #ff577f);
+  }
+
+  &.register {
+    border: 0.0761rem solid var(--grey-1, #868e96);
+    background: var(--grey-1, #868e96);
+  }
+
+  &.registerTwo {
+    border: 0.0761rem solid var(--color-primary-negative, #59323f);
+    background: var(--color-primary-negative, #59323f);
+  }
+
+  &.small {
+    width: 5rem;
+    height: 2.5069rem;
+    padding: 0rem 1.0152rem;
+    background: var(--grey-3, #212529);
+
+    color: var(--grey-0, #f8f9fa);
+    text-align: center;
+    font-family: "Inter";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.4204rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    width: 20.38rem;
+    height: 3rem;
+
+    font-size: 1rem;
+    line-height: 1.6496rem;
+  }
+}
