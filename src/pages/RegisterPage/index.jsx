@@ -1,17 +1,16 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchemaRegister } from "./formSchema";
 import { Select } from "../../components/Select";
 import { Input } from "../../components/Input";
-import { apiKenzieHub } from "../../services/apiKenzieHub";
-import { toast } from "react-toastify";
+import { useContext } from "react";
+import { LoginContext } from "../../providers/LoginContext";
 import logo from "../../../public/logo.svg";
 import style from "./style.module.scss";
 
 export const RegisterPage = () => {
-  const navigate = useNavigate();
-
+  const {submitCreate} = useContext(LoginContext)
   const {
     register,
     handleSubmit,
@@ -19,29 +18,6 @@ export const RegisterPage = () => {
   } = useForm({
     resolver: zodResolver(formSchemaRegister),
   });
-
-  const submit = (formData) => {
-    createUser(formData);
-  };
-
-  const createUser = async (formData) => {
-    console.log(formData.email);
-    try {
-      const { data } = await apiKenzieHub.post("users", {
-        email: formData.email,
-        password: formData.password,
-        name: formData.name,
-        bio: formData.bio,
-        contact: formData.contact,
-        course_module: formData.course_module,
-      });
-      toast.success("Cadastro realizado com Sucesso!");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      toast.error("Erro ao realizaro cadastro");
-    }
-  };
 
   return (
     <main className={style.container}>
@@ -52,7 +28,7 @@ export const RegisterPage = () => {
             <button className="btn small">Voltar</button>
           </Link>
         </div>
-        <form onSubmit={handleSubmit(submit)} className={style.form}>
+        <form onSubmit={handleSubmit(submitCreate)} className={style.form}>
           <h1>Crie sua Conta</h1>
           <span className={style.span}>Rápido e grátis, vamo nessa</span>
           <Input

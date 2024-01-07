@@ -1,15 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import style from "./style.module.scss";
 import logo from "../../../public/logo.svg";
+import { useContext } from "react";
+import { LoginContext } from "../../providers/LoginContext";
 
-export const Dashboard = ({ user, setUser }) => {
-  const navigate = useNavigate();
-
-  const logout = () => {
-    setUser([]);
-    localStorage.removeItem("@TokenKenzieHub");
-    navigate("/");
-  };
+export const Dashboard = () => {
+  const { user, logout } = useContext(LoginContext);
 
   return (
     <main className={style.container}>
@@ -21,7 +16,7 @@ export const Dashboard = ({ user, setUser }) => {
           </button>{" "}
         </div>
         <div className={style.boxTwo}>
-          <h1 className="title one">Olá,{user.name}</h1>
+          <h1 className="title one">Olá, {user.name}</h1>
           <span className="title headline">{user.course_module}</span>
         </div>
         <div className={style.boxThree}>
