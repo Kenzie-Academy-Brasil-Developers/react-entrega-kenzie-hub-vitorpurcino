@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchemaLogin } from "./formSchema";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LoginContext } from "../../providers/LoginContext";
 import { Form } from "../../components/Form";
 import { Input } from "../../components/Input";
@@ -10,15 +10,21 @@ import logo from "../../../public/logo.svg";
 import style from "./style.module.scss";
 
 export const LoginPage = () => {
-  const { submitLogin } = useContext(LoginContext);
+  const { login } = useContext(LoginContext);
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchemaLogin),
   });
+
+  const submitLogin = (formData) => {
+    login(formData, reset, setLoading);
+  };
 
   return (
     <main className="container">
@@ -50,7 +56,7 @@ export const LoginPage = () => {
           />
 
           <button type="submit" className="btn toEnter">
-            Entrar
+            {loading ? "Acessando..." : "Entrar"}
           </button>
           <span className={style.span}>Ainda não possui uma conta?</span>
           <Link to="/register">

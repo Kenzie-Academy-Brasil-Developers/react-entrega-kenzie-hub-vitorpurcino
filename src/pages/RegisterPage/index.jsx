@@ -4,20 +4,26 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchemaRegister } from "./formSchema";
 import { Select } from "../../components/Select";
 import { Input } from "../../components/Input";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LoginContext } from "../../providers/LoginContext";
 import logo from "../../../public/logo.svg";
 import style from "./style.module.scss";
 
 export const RegisterPage = () => {
-  const {submitCreate} = useContext(LoginContext)
+  const [loading, setLoading] = useState(false);
+  const { createUser } = useContext(LoginContext);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchemaRegister),
   });
+
+  const submitCreate = (formData) => {
+    createUser(formData, reset, setLoading);
+  };
 
   return (
     <main className={style.container}>
@@ -94,7 +100,7 @@ export const RegisterPage = () => {
             className="input"
           />
           <button type="submit" className="btn registerTwo">
-            Cadastrar
+            {loading ? "Cadastrando..." : "Cadastrar"}
           </button>
         </form>
       </div>

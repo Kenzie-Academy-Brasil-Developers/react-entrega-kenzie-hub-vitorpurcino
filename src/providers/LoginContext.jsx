@@ -12,7 +12,7 @@ export const LoginProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       const token = localStorage.getItem("@TokenKenzieHub");
-      
+
       if (token) {
         try {
           const { data } = await apiKenzieHub.get("profile", {
@@ -21,7 +21,7 @@ export const LoginProvider = ({ children }) => {
             },
           });
           setUser(data);
-          navigate("/dashboard")
+          navigate("/dashboard");
         } catch (error) {
           console.log(error);
           logout();
@@ -31,12 +31,11 @@ export const LoginProvider = ({ children }) => {
     loadUser();
   }, []);
 
-  const submitLogin = (formData) => {
-    login(formData);
-  };
-
-  const login = async ({ email, password }) => {
+  const login = async (formData, reset, setLoading) => {
+    const { email, password } = formData;
     try {
+      setLoading(true);
+
       const { data } = await apiKenzieHub.post("sessions", {
         email: email,
         password: password,
@@ -44,8 +43,11 @@ export const LoginProvider = ({ children }) => {
       localStorage.setItem("@TokenKenzieHub", data.token);
       setUser(data.user);
       navigate("/dashboard");
+      reset();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,13 +57,9 @@ export const LoginProvider = ({ children }) => {
     navigate("/");
   };
 
-  const submitCreate = (formData) => {
-    createUser(formData);
-  };
-
-  const createUser = async (formData) => {
-    console.log(formData.email);
+  const createUser = async (formData, reset, setLoading) => {
     try {
+      setLoading(true);
       const { data } = await apiKenzieHub.post("users", {
         email: formData.email,
         password: formData.password,
@@ -72,9 +70,12 @@ export const LoginProvider = ({ children }) => {
       });
       toast.success("Cadastro realizado com Sucesso!");
       navigate("/");
+      reset();
     } catch (error) {
       console.log(error);
       toast.error("Erro ao realizaro cadastro");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,11 +84,9 @@ export const LoginProvider = ({ children }) => {
       value={{
         user,
         setUser,
-        submitLogin,
         login,
         logout,
         createUser,
-        submitCreate,
       }}
     >
       {children}
