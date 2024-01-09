@@ -5,13 +5,13 @@ import { formSchemaRegister } from "./formSchema";
 import { Select } from "../../components/Select";
 import { Input } from "../../components/Input";
 import { useContext, useState } from "react";
-import { LoginContext } from "../../providers/LoginContext";
 import logo from "../../../public/logo.svg";
 import style from "./style.module.scss";
+import { UserContext } from "../../providers/UserContext";
 
 export const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
-  const { createUser } = useContext(LoginContext);
+  const { createUser } = useContext(UserContext);
   const {
     register,
     handleSubmit,

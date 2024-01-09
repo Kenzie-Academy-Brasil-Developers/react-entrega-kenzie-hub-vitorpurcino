@@ -1,10 +1,10 @@
 import style from "./style.module.scss";
 import logo from "../../../public/logo.svg";
 import { useContext } from "react";
-import { LoginContext } from "../../providers/LoginContext";
+import { UserContext } from "../../providers/UserContext";
 
 export const Dashboard = () => {
-  const { user, logout } = useContext(LoginContext);
+  const { user, logout } = useContext(UserContext);
 
   return (
     <main className={style.container}>

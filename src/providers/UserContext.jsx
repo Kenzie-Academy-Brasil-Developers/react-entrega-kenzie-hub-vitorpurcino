@@ -3,32 +3,38 @@ import { useNavigate } from "react-router-dom";
 import { apiKenzieHub } from "../services/apiKenzieHub";
 import { toast } from "react-toastify";
 
-export const LoginContext = createContext({});
+export const UserContext = createContext({});
 
-export const LoginProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const token = localStorage.getItem("@TokenKenzieHub");
+  const pathName = window.location.pathname;
 
   useEffect(() => {
     const loadUser = async () => {
-      const token = localStorage.getItem("@TokenKenzieHub");
-
       if (token) {
         try {
+          setLoading(true);
           const { data } = await apiKenzieHub.get("profile", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
           setUser(data);
-          navigate("/dashboard");
+          navigate(pathName);
         } catch (error) {
           console.log(error);
           logout();
+        } finally {
+          setLoading(false);
         }
       }
     };
-    loadUser();
+    if (token) {
+      loadUser();
+    }
   }, []);
 
   const login = async (formData, reset, setLoading) => {
@@ -52,7 +58,7 @@ export const LoginProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setUser([]);
+    setUser(null);
     localStorage.removeItem("@TokenKenzieHub");
     navigate("/");
   };
@@ -80,16 +86,17 @@ export const LoginProvider = ({ children }) => {
   };
 
   return (
-    <LoginContext.Provider
+    <UserContext.Provider
       value={{
         user,
         setUser,
         login,
         logout,
         createUser,
+        loading,
       }}
     >
       {children}
-    </LoginContext.Provider>
+    </UserContext.Provider>
   );
 };

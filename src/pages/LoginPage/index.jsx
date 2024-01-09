@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchemaLogin } from "./formSchema";
 import { useContext, useState } from "react";
-import { LoginContext } from "../../providers/LoginContext";
 import { Form } from "../../components/Form";
 import { Input } from "../../components/Input";
 import logo from "../../../public/logo.svg";
 import style from "./style.module.scss";
+import { UserContext } from "../../providers/UserContext";
 
 export const LoginPage = () => {
-  const { login } = useContext(LoginContext);
+  const { login } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -55,8 +55,8 @@ export const LoginPage = () => {
             className="input"
           />
 
-          <button type="submit" className="btn toEnter">
-            {loading ? "Acessando..." : "Entrar"}
+          <button type="submit" className= "btn toEnter">
+            {loading ? "Carregando..." : "Entrar"}
           </button>
           <span className={style.span}>Ainda não possui uma conta?</span>
           <Link to="/register">
