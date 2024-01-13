@@ -1,0 +1,131 @@
+.modalOverlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  color: var(--grey-0);
+  font-family: var(--font-primary);
+}
+
+.modalBox {
+  width: 100%;
+  max-width: 18.5rem;
+  height: 17.125rem;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 0.2006rem;
+  background: var(--grey-3);
+  box-shadow: 0rem 0.2006rem 2.0054rem -0.5014rem rgba(0, 0, 0, 0.25);
+}
+
+.header {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0.5625rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 0.2006rem 0.2006rem 0px 0px;
+  background: var(--grey-2, #343b41);
+
+  h1 {
+    font-size: 0.7019rem;
+    font-weight: 700;
+    line-height: 1.2032rem;
+  }
+
+  svg {
+    color: var(--grey-1);
+    cursor: pointer;
+  }
+}
+
+.form {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 0px;
+}
+
+.input {
+  width: 100%;
+  height: 2.4065rem;
+
+  margin: 0.5rem 0rem;
+  padding: 0px 0.8143rem;
+  gap: 0.5089rem;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 0.2006rem;
+  border: 0.0611rem solid var(--grey-0);
+  background: var(--grey-2, #343b41);
+
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.3233rem;
+}
+
+.btn {
+  width: 100%;
+  height: 2.4065rem;
+  padding: 0px 1.3959rem;
+  margin-top: 20px;
+  gap: 0.6345rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+
+  font-size: 0.8022rem;
+  font-weight: 500;
+  line-height: 1.3233rem;
+
+  border: 0.0761rem solid var(--color-primary, #ff577f);
+  background: var(--color-primary, #ff577f);
+}
+
+@media screen and (min-width: 520px) {
+  .modalBox {
+    max-width: 369px;
+    height: 342px;
+  }
+  .header {
+    height: 50px;
+    h1 {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+  }
+  .input {
+    height: 48px;
+    padding: 0rem 1.0152rem;
+    gap: 0.6345rem;
+    border-radius: 0.25rem;
+    border: 0.0761rem solid var(--grey-0, #f8f9fa);
+
+    font-size: 1.0152rem;
+    line-height: 1.6496rem;
+  }
+
+  .btn {
+    height: 3rem;
+    font-size: 1rem;
+    line-height: 1.6496rem;
+    margin-top: 40px;
+  }
+}

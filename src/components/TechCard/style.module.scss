@@ -1,0 +1,51 @@
+.cardTech {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  background-color: var(--grey-4);
+  padding: 1rem 0.875rem;
+  gap: 0.5rem;
+
+  color: var(--grey-0);
+  font-family: var(--font-primary);
+  line-height: 1.3959rem;
+
+  h2 {
+    font-size: 0.8881rem;
+    font-weight: 700;
+  }
+}
+
+.cardDescription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    color: var(--grey-1);
+    font-size: 0.7614rem;
+    font-weight: 400;
+  }
+
+  div {
+    display: flex;
+    gap: 1.25rem;
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cardTech {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .cardDescription {
+    gap: 1.25rem;
+  }
+}

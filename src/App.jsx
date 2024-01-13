@@ -4,7 +4,7 @@ import "./styles/index.scss";
 import "react-toastify/dist/ReactToastify.min.css";
 import { useContext } from "react";
 import { Spinner } from "react-loading-io";
-import { UserContext } from "./providers/UserContext";
+import { UserContext } from "./providers/index";
 
 const App = () => {
   const { loading } = useContext(UserContext);

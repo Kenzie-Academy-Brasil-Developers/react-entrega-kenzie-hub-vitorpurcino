@@ -2,14 +2,15 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchemaRegister } from "./formSchema";
-import { Select } from "../../components/Select";
-import { Input } from "../../components/Input";
 import { useContext, useState } from "react";
+import { UserContext } from "../../providers/index";
+import { Select, Input } from "../../components/index";
 import logo from "../../../public/logo.svg";
 import style from "./style.module.scss";
-import { UserContext } from "../../providers/UserContext";
+import { optionsRegister } from "../../data/data";
 
 export const RegisterPage = () => {
+  const optionsSelect = optionsRegister;
   const [loading, setLoading] = useState(false);
   const { createUser } = useContext(UserContext);
   const {
@@ -98,6 +99,7 @@ export const RegisterPage = () => {
             error={errors.course_module}
             {...register("course_module")}
             className="input"
+            optionsSelect={optionsSelect}
           />
           <button type="submit" className="btn registerTwo">
             {loading ? "Cadastrando..." : "Cadastrar"}

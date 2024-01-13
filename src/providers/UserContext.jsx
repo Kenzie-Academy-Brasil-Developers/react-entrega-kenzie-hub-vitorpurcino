@@ -51,7 +51,9 @@ export const UserProvider = ({ children }) => {
       navigate("/dashboard");
       reset();
     } catch (error) {
-      console.log(error);
+      if (error.request.status === 401) {
+        toast.error("Senha Incorreta");
+      }
     } finally {
       setLoading(false);
     }

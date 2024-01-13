@@ -1,9 +1,8 @@
+import { Dashboard, LoginPage, RegisterPage } from "../pages/index";
 import { Route, Routes } from "react-router-dom";
-import { LoginPage } from "../pages/LoginPage";
-import { RegisterPage } from "../pages/RegisterPage";
-import { Dashboard } from "../pages/Dashboard";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
+import { TechProvider } from "../providers";
 
 export const RoutesMain = () => {
   return (
@@ -14,7 +13,14 @@ export const RoutesMain = () => {
       </Route>
 
       <Route element={<PrivateRoute />}>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <TechProvider>
+              <Dashboard />
+            </TechProvider>
+          }
+        />
       </Route>
     </Routes>
   );

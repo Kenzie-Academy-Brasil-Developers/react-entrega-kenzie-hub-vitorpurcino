@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchemaLogin } from "./formSchema";
 import { useContext, useState } from "react";
-import { Form } from "../../components/Form";
-import { Input } from "../../components/Input";
 import logo from "../../../public/logo.svg";
 import style from "./style.module.scss";
-import { UserContext } from "../../providers/UserContext";
+import { UserContext } from "../../providers/index";
+import { Form, Input } from "../../components/index"
 
 export const LoginPage = () => {
   const { login } = useContext(UserContext);
