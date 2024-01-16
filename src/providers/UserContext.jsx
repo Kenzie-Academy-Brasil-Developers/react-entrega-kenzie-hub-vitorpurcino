@@ -8,6 +8,7 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
+  const [techs, setTechs] = useState();
   const navigate = useNavigate();
   const token = localStorage.getItem("@TokenKenzieHub");
   const pathName = window.location.pathname;
@@ -48,6 +49,8 @@ export const UserProvider = ({ children }) => {
       });
       localStorage.setItem("@TokenKenzieHub", data.token);
       setUser(data.user);
+      //console.log(data.user.techs);
+      setTechs(data.user.techs)
       navigate("/dashboard");
       reset();
     } catch (error) {
@@ -96,6 +99,8 @@ export const UserProvider = ({ children }) => {
         logout,
         createUser,
         loading,
+        techs,
+        setTechs,
       }}
     >
       {children}

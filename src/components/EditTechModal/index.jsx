@@ -15,7 +15,12 @@ export const EditTechModal = ({ setOpenModalEdit }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    values: {
+      title: editingTech.title,
+      status: editingTech.status,
+    },
+  });
 
   const modalRef = useOutClick(() => {
     setOpenModalEdit(false);
@@ -42,7 +47,6 @@ export const EditTechModal = ({ setOpenModalEdit }) => {
             label="Nome"
             type="text"
             id="title"
-            value={editingTech.title}
             placeholder="Tecnologia"
             {...register("title")}
             error={errors.title}

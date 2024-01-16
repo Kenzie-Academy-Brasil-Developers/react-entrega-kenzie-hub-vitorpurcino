@@ -6,8 +6,7 @@ import { UserContext } from "./index";
 export const TechContext = createContext({});
 
 export const TechProvider = ({ children }) => {
-  const { user } = useContext(UserContext);
-  const [techs, setTechs] = useState(user.techs);
+  const { techs, setTechs } = useContext(UserContext);
   const [editingTech, setEditingTech] = useState(null);
   const token = localStorage.getItem("@TokenKenzieHub");
 
@@ -76,8 +75,6 @@ export const TechProvider = ({ children }) => {
         createTech,
         editTech,
         deleteTech,
-        techs,
-        setTechs,
         editingTech,
         setEditingTech,
       }}
