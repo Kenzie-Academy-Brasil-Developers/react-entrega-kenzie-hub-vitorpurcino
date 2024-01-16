@@ -49,7 +49,6 @@ export const UserProvider = ({ children }) => {
       });
       localStorage.setItem("@TokenKenzieHub", data.token);
       setUser(data.user);
-      //console.log(data.user.techs);
       setTechs(data.user.techs)
       navigate("/dashboard");
       reset();
